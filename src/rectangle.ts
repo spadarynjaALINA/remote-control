@@ -1,6 +1,5 @@
- import Jimp from 'jimp';
  import robot from 'robotjs';
-import   WebSocket, { WebSocketServer }  from 'ws';
+import   WebSocket  from 'ws';
 
 export const rectangular = ( packet:string[],server:WebSocket.WebSocket ) =>
 {

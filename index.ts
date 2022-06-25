@@ -5,6 +5,7 @@ import { httpServer } from './src/http_server';
 import { square } from './src/square';
 import { rectangular } from './src/rectangle';
 import { circle } from './src/circle';
+import { screen } from './src/screen';
 const HTTP_PORT = 3030;
 
 console.log(`Start static http server on the ${HTTP_PORT} port!`);
@@ -50,7 +51,7 @@ wss.on( 'connection', ws =>
 						 square(packet,ws)
 						break;
 						case "prnt_scrn":
-	ws.send(`prnt_scrn ${mouse.x},${mouse.y} ${mouse}`)
+screen(100,100,ws)
 						break;
 	}
   });
