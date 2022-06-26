@@ -10,11 +10,11 @@ export const square = ( packet:string[],server:WebSocket.WebSocket ) =>
 						const y1 = mouse.y
 						const y2 = ( mouse.y + Number( packet[1] ) )
 
-						server.send( robot.mouseToggle('down'));
-					server.send( robot.moveMouseSmooth(x1 + Number( packet[1]),y1))
-					server.send( robot.moveMouseSmooth(x2,y1 + Number( packet[1])))
-				server.send( robot.moveMouseSmooth(x2 - Number( packet[1]),y2) )
-					server.send( robot.moveMouseSmooth(x1,y2 - Number( packet[1])))
-					server.send( robot.mouseToggle('up'));
+						 robot.mouseToggle('down')
+					 robot.moveMouseSmooth(x1 + Number( packet[1]),y1)
+					 robot.moveMouseSmooth(x2,y1 + Number( packet[1]))
+				 robot.moveMouseSmooth(x2 - Number( packet[1]),y2)
+					 robot.moveMouseSmooth(x1,y2 - Number( packet[1]))
+				 robot.mouseToggle('up')
 
 }

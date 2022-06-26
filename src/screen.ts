@@ -1,8 +1,9 @@
  import Jimp from 'jimp';
 import robot from 'robotjs'
+import { Duplex } from 'stream';
 import WebSocket from 'ws';
 
-export const screen = async ( width: number, height: number, ws: WebSocket.WebSocket ) =>
+export const screen = async ( width: number, height: number,ws:Duplex ) =>
 {
 		const mouse = robot.getMousePos()
  const x = mouse.x - width
@@ -24,8 +25,7 @@ export const screen = async ( width: number, height: number, ws: WebSocket.WebSo
         image.bitmap.data[i] = 255
     }
   })
-  // image.bitmap.data = pic.image;
-const base64= await image.getBufferAsync( Jimp.MIME_PNG)
- ws.send(`prnt_scrn ${base64.toString('base64')}\0`);
-
+	const base64 = await image.getBufferAsync( Jimp.MIME_PNG )
+const p = base64.toString( 'base64' )
+return p
 	}

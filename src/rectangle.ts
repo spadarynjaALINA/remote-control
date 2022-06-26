@@ -1,7 +1,8 @@
  import robot from 'robotjs';
+import { Duplex } from 'stream';
 import   WebSocket  from 'ws';
 
-export const rectangular = ( packet:string[],server:WebSocket.WebSocket ) =>
+export const rectangular = ( packet:string[] ) =>
 {
 
 	const mouse = robot.getMousePos()
@@ -10,12 +11,12 @@ export const rectangular = ( packet:string[],server:WebSocket.WebSocket ) =>
 						const y1 = mouse.y
 						const y2 = ( mouse.y + Number( packet[2] ) )
 
-	server.send( robot.mouseToggle( 'down' ) );
-	server.send( robot.mouseToggle('down'));
-					server.send( robot.moveMouseSmooth(x1 + Number( packet[1]),y1))
-					server.send( robot.moveMouseSmooth(x2,y1 + Number( packet[2])))
-				server.send( robot.moveMouseSmooth(x2 - Number( packet[1]),y2) )
-					server.send( robot.moveMouseSmooth(x1,y2 - Number( packet[2])))
-					server.send( robot.mouseToggle('up'));
+	  robot.mouseToggle( 'down' ) ;
+   robot.mouseToggle('down');
+			robot.moveMouseSmooth(x1 + Number( packet[1]),y1)
+			robot.moveMouseSmooth(x2,y1 + Number( packet[2]))
+			robot.moveMouseSmooth(x2 - Number( packet[1]),y2)
+				robot.moveMouseSmooth(x1,y2 - Number( packet[2]))
+				robot.mouseToggle('up');
 
 }
